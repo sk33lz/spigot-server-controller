@@ -2,5 +2,5 @@
 .gitignore
 README.md
 Dockerfile
-minecraft-data
-minecraft-files
+minecraft-data/
+minecraft-files/
