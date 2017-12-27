@@ -10,17 +10,17 @@ create() {
     -it \
     --name $NAME \
     -d \
-    #-v $MYPWD/minecraft-files:/opt/minecraft \
-    #-v $MYPWD/minecraft-data:/var/lib/minecraft \
+    -v $MYPWD/minecraft-files:/opt/minecraft \
+    -v $MYPWD/minecraft-data:/var/lib/minecraft \
     -p 0.0.0.0:25565:25565 \
     -e DEFAULT_OP=iroczspot \
     -e MINECRAFT_EULA=true \
     -e MINECRAFT_VERSION=1.12.2 \
     -e ENABLE_RCON=true \
-    -e MOTD='Testing a Spigot Server' \
+    -e MOTD='Spigot Testing Server' \
     -e MAX_PLAYERS=10 \
     -e RCON_PASSWORD=testing123 \
-    sk33lz/spigot-docker:latest
+    sk33lz/spigot-server:latest
 
     docker logs -f $NAME
 }
@@ -31,7 +31,9 @@ start() {
 }
 
 stop() {
+    echo "Stopping $NAME Container"
     docker stop $NAME
+    echo "Removing $NAME Container"
     docker rm $NAME
     docker ps -a 
 }
