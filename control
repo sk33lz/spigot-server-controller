@@ -17,8 +17,9 @@ create() {
     -e MINECRAFT_EULA=true \
     -e MINECRAFT_VERSION=1.12.2 \
     -e ENABLE_RCON=true \
-    -e MOTD='Testing a Server' \
+    -e MOTD='Testing a Spigot Server' \
     -e MAX_PLAYERS=10 \
+    -e RCON_PASSWORD=testing123 \
     sk33lz/spigot-docker:latest
 
 	docker logs -f $NAME
@@ -31,6 +32,7 @@ start() {
 
 stop() {
 	docker stop $NAME
+    docker rm $NAME
 	docker ps -a 
 }
 

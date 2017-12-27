@@ -90,7 +90,7 @@ first_run() {
         echo "generate-structures=${GENERATE_STRUCTURES:-true}" >> $MINECRAFT_HOME/server.properties
         echo "view-distance=${VIEW_DISTANCE:-10}" >> $MINECRAFT_HOME/server.properties
         echo "spawn-protection=${SPAWN_PROTECTION:-16}" >> $MINECRAFT_HOME/server.properties
-        echo "motd=${MOTD:-A Spigot Minecraft Server}" >> $MINECRAFT_HOME/server.properties
+        echo "motd=${MOTD:-'A Spigot Minecraft Server'}" >> $MINECRAFT_HOME/server.properties
         echo "network-compression-threshold=${NETWORK_COMPRESSION_THRESHOLD:-256}" >> $MINECRAFT_HOME/server.properties
         echo "max-world-size=${MAX_WORLD_SIZE:-29999984}" >> $MINECRAFT_HOME/server.properties
         echo "resource-pack-sha1=${RESOURCE_PACK_SHA1:- }" >> $MINECRAFT_HOME/server.properties
