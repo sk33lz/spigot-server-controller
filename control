@@ -6,9 +6,9 @@ NAME=spigot-instance
 #MESSAGE=$1
 
 create() {
-	docker run \
+    docker run \
     -it \
-	--name $NAME \
+    --name $NAME \
     -d \
     -v $MYPWD/minecraft-files:/opt/minecraft \
     -v $MYPWD/minecraft-data:/var/lib/minecraft \
@@ -22,23 +22,27 @@ create() {
     -e RCON_PASSWORD=testing123 \
     sk33lz/spigot-docker:latest
 
-	docker logs -f $NAME
+    docker logs -f $NAME
 }
 
 start() {
-	docker start $NAME
-	docker logs -f $NAME
+    docker start $NAME
+    docker logs -f $NAME
 }
 
 stop() {
-	docker stop $NAME
+    docker stop $NAME
     docker rm $NAME
-	docker ps -a 
+    docker ps -a 
 }
 
 restart() {
     docker stop $NAME
     create
+}
+
+logs() {
+    docker logs -f $NAME
 }
 
 #say() {
@@ -62,6 +66,10 @@ case "$1" in
     restart
     exit 0
     ;;
+  (logs)
+    logs
+    exit 0
+    ;;
   (say)
     say
     exit 0
@@ -71,7 +79,8 @@ case "$1" in
     echo "create: create a new server instance in the current directory on the local machine."
     echo "start: start an existing server instance."
     echo "stop: stop the server instance in the current directory on the local machine."
-    echo "say: say a message on the admin console"
+    echo "say: say a message on the admin console."
+    echo "logs: take a look at the most recent logs from the docker container."
     exit 2
     ;;
 esac
